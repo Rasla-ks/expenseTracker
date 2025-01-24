@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:host {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-drawer-container {
+    flex: 1 1 auto;
+  }
+  
+  mat-drawer {
+    width: 200px;
+  }
+  
+  main {
+    padding: 1rem;
+  }
+  
