@@ -11,29 +11,56 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
+  // upsertTransaction(transaction: Transaction) {
+  //   return this.http.post<Transaction>(this.baseUrl + 'Upsert', transaction);
+  // }
   upsertTransaction(transaction: Transaction) {
-    return this.http.post<Transaction>(this.baseUrl + 'Upsert', transaction);
-  }
-
-  getAllTransactions() {
-    const token = localStorage.getItem('authToken'); // Retrieve token from local storage
+    const token = localStorage.getItem('authToken'); 
     
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`  // Add token to Authorization header
+      'Authorization': `Bearer ${token}`  
+    });
+  
+    return this.http.post<Transaction>(this.baseUrl + 'Upsert', transaction, { headers });
+  }
+  
+  getAllTransactions() {
+    const token = localStorage.getItem('authToken'); 
+    
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`  
     });
   
     return this.http.get<Transaction[]>(this.baseUrl + 'GetAll', { headers });
   }
 
+  // deleteTransaction(id: number) {
+  //   return this.http.delete(this.baseUrl + 'Delete/' + id, {
+  //     responseType: 'text',
+  //   });
+  // }
   deleteTransaction(id: number) {
-    return this.http.delete(this.baseUrl + 'Delete/' + id, {
-      responseType: 'text',
+    const token = localStorage.getItem('authToken'); 
+    
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`  
     });
+  
+    return this.http.delete(this.baseUrl + 'Delete/' + id, { headers, responseType: 'text' });
   }
-
+  
+  // getMonthlyTransactions() {
+  //   return this.http.get<MonthlyTransactions[]>(
+  //     this.baseUrl + 'GetMonthlyTransactions'
+  //   );
+  // }
   getMonthlyTransactions() {
-    return this.http.get<MonthlyTransactions[]>(
-      this.baseUrl + 'GetMonthlyTransactions'
-    );
+    const token = localStorage.getItem('authToken'); 
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`  
+    });
+  
+    return this.http.get<MonthlyTransactions[]>(this.baseUrl + 'GetMonthlyTransactions', { headers });
   }
+  
 }

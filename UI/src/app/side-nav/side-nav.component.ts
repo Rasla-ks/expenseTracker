@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class SideNavComponent {
   navItems: { name: string; link: string }[] = [
-    { name: 'maintenance', link: 'maintenance' },
+    { name: 'dashboard', link: '' },
     { name: 'view data', link: 'view' },
   ];
 }
